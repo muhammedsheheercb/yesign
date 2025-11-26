@@ -18,7 +18,7 @@ export const mockReviews: Review[] = [
       text: "YESIGN transformed our restaurant's brand identity completely! Their team created a stunning logo, menu design, and social media presence that truly captures the essence of Kerala cuisine. The attention to detail and understanding of our cultural values was exceptional. Highly recommend their services!",
     },
     authorAttribution: {
-      displayName: 'Arun Krishnan',
+      displayName: 'Arun Krishna',
       photoUri: '',
     },
     relativePublishTimeDescription: '2 weeks ago',
