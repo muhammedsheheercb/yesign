@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { NextResponse } from 'next/server';
 // import nodemailer from 'nodemailer';
 
@@ -69,12 +70,44 @@ export async function POST(req: Request) {
 
     // Validation
     if (!first || !last || !email || !phone || !message) {
+=======
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+interface ContactFormData {
+  name: string;
+  phone: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = (await req.json()) as ContactFormData;
+    const { name, email, phone, subject, message } = body;
+
+    // Validate required fields
+    if (!name || !email || !phone || !subject || !message) {
+>>>>>>> dbe9b69 (all section added)
       return NextResponse.json(
         { error: 'All fields are required' },
         { status: 400 }
       );
     }
 
+<<<<<<< HEAD
+=======
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: 'Invalid email address' },
+        { status: 400 }
+      );
+    }
+
+>>>>>>> dbe9b69 (all section added)
     const smtpOptions = {
       host: 'smtp.gmail.com',
       port: 587,
@@ -89,6 +122,7 @@ export async function POST(req: Request) {
       ...smtpOptions,
     });
 
+<<<<<<< HEAD
     const fullName = `${first} ${last}`;
 
     // Email to business owner
@@ -96,10 +130,18 @@ export async function POST(req: Request) {
       from: `${process.env.EMAIL_FROM_PREFIX || 'Spice Catering'} Contact <${process.env.EMAIL_USER}>`,
       to: process.env.RECIPIENT_EMAIL || 'spicysquarecatering@gmail.com',
       subject: `New Contact Form Submission - ${fullName}`,
+=======
+    // Email to YESIGN admin
+    const adminMailOptions = {
+      from: `YESIGN Contact Form <${process.env.EMAIL_USER}>`,
+      to: process.env.RECIPIENT_EMAIL || 'admin@yesign.in',
+      subject: `New Contact: ${subject}`,
+>>>>>>> dbe9b69 (all section added)
       html: `
         <!DOCTYPE html>
         <html>
         <head>
+<<<<<<< HEAD
           <style>
             body {
               font-family: 'Arial', sans-serif;
@@ -211,21 +253,82 @@ export async function POST(req: Request) {
                 <div class="label">Message</div>
                 <div class="message-box">
                   <div class="value">${message}</div>
+=======
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: Arial, sans-serif;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #22d3ee; font-size: 24px; margin: 0;">YESIGN</h1>
+              <p style="color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px;">New Contact Form Submission</p>
+            </div>
+            
+            <!-- Main Content -->
+            <div style="background-color: #111; border: 1px solid #222; padding: 30px;">
+              <!-- Corner accent simulation -->
+              <div style="border-left: 2px solid #22d3ee; border-top: 2px solid #22d3ee; width: 20px; height: 20px; margin-bottom: -20px;"></div>
+              
+              <h2 style="color: #fff; font-size: 18px; margin: 20px 0 25px 0; text-transform: uppercase; letter-spacing: 1px;">Contact Details</h2>
+              
+              <!-- Info Table -->
+              <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #22d3ee; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; width: 100px;">Name</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #fff; font-size: 14px;">${name}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #22d3ee; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Email</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #fff; font-size: 14px;">
+                    <a href="mailto:${email}" style="color: #fff; text-decoration: none;">${email}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #22d3ee; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Phone</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #fff; font-size: 14px;">
+                    <a href="tel:${phone}" style="color: #fff; text-decoration: none;">${phone}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #22d3ee; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Subject</td>
+                  <td style="padding: 12px 0; border-bottom: 1px solid #222; color: #fff; font-size: 14px;">${subject}</td>
+                </tr>
+              </table>
+              
+              <!-- Message Section -->
+              <div style="margin-top: 25px;">
+                <h3 style="color: #22d3ee; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">Message</h3>
+                <div style="background-color: #0a0a0a; border-left: 2px solid #22d3ee; padding: 20px; color: #ccc; font-size: 14px; line-height: 1.6;">
+                  ${message.replace(/\n/g, '<br>')}
+>>>>>>> dbe9b69 (all section added)
                 </div>
               </div>
             </div>
             
+<<<<<<< HEAD
             <div class="footer">
               <p><strong>Spice Catering Services</strong></p>
               <p>Warehouse 130-103, King Key Stores<br>Dubai Investment Park 2</p>
               <p>Phone: <a href="tel:0507440148">050 744 0148</a></p>
               <p>Email: <a href="mailto:spicysquarecatering@gmail.com">spicysquarecatering@gmail.com</a></p>
               <p style="margin-top: 15px; opacity: 0.8;">© ${new Date().getFullYear()} Spice Catering. All Rights Reserved.</p>
+=======
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #222;">
+              <p style="color: #666; font-size: 12px; margin: 0;">
+                This email was sent from the YESIGN website contact form.
+              </p>
+              <p style="color: #444; font-size: 11px; margin-top: 10px;">
+                © ${new Date().getFullYear()} YESIGN Creative Agency
+              </p>
+>>>>>>> dbe9b69 (all section added)
             </div>
           </div>
         </body>
         </html>
       `,
+<<<<<<< HEAD
       text: `
 New Contact Form Submission
 
@@ -253,10 +356,20 @@ Email: spicysquarecatering@gmail.com
       from: `${process.env.EMAIL_FROM_PREFIX || 'Spice Catering'} <${process.env.EMAIL_USER}>`,
       to: email,
       subject: 'Thank You for Contacting Spice Catering',
+=======
+    };
+
+    // Auto-reply to the sender
+    const autoReplyOptions = {
+      from: `YESIGN <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: `Thank you for contacting YESIGN!`,
+>>>>>>> dbe9b69 (all section added)
       html: `
         <!DOCTYPE html>
         <html>
         <head>
+<<<<<<< HEAD
           <style>
             body {
               font-family: 'Arial', sans-serif;
@@ -373,11 +486,61 @@ Email: spicysquarecatering@gmail.com
               <p><strong>Spice Catering Services</strong></p>
               <p>Authentic Indian Cuisine • Fresh Daily Preparation • Home Delivery</p>
               <p style="margin-top: 15px; opacity: 0.8;">© ${new Date().getFullYear()} Spice Catering. All Rights Reserved.</p>
+=======
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="margin: 0; padding: 0; background-color: #0a0a0a; font-family: Arial, sans-serif;">
+          <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #22d3ee; font-size: 28px; margin: 0;">YESIGN</h1>
+              <p style="color: #666; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; margin-top: 8px;">Creative Agency</p>
+            </div>
+            
+            <!-- Main Content -->
+            <div style="background-color: #111; border: 1px solid #222; padding: 40px 30px; text-align: center;">
+              <h2 style="color: #fff; font-size: 22px; margin: 0 0 20px 0;">Thank You, ${name}!</h2>
+              
+              <p style="color: #999; font-size: 14px; line-height: 1.8; margin: 0 0 25px 0;">
+                We've received your message and appreciate you reaching out to us. Our team will review your inquiry and get back to you within 24 hours.
+              </p>
+              
+              <div style="background-color: #0a0a0a; border-left: 2px solid #22d3ee; padding: 20px; text-align: left; margin: 25px 0;">
+                <p style="color: #22d3ee; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0;">Your Subject</p>
+                <p style="color: #fff; font-size: 14px; margin: 0;">${subject}</p>
+              </div>
+              
+              <p style="color: #666; font-size: 13px; line-height: 1.6; margin: 0;">
+                In the meantime, feel free to explore our work or follow us on social media.
+              </p>
+            </div>
+            
+            <!-- Contact Info -->
+            <div style="margin-top: 30px; text-align: center;">
+              <p style="color: #666; font-size: 12px; margin: 0;">
+                <span style="color: #22d3ee;">Phone:</span> +91 9400671513
+              </p>
+              <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
+                <span style="color: #22d3ee;">Email:</span> admin@yesign.in
+              </p>
+              <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">
+                <span style="color: #22d3ee;">Location:</span> Erumapetty, Thrissur, Kerala
+              </p>
+            </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #222;">
+              <p style="color: #444; font-size: 11px; margin: 0;">
+                © ${new Date().getFullYear()} YESIGN Creative Agency. All rights reserved.
+              </p>
+>>>>>>> dbe9b69 (all section added)
             </div>
           </div>
         </body>
         </html>
       `,
+<<<<<<< HEAD
       text: `
 Dear ${fullName},
 
@@ -411,6 +574,15 @@ Authentic Indian Cuisine • Fresh Daily Preparation • Home Delivery
 
     // Send confirmation email to customer
     await transporter.sendMail(customerMailOptions);
+=======
+    };
+
+    // Send both emails
+    await Promise.all([
+      transporter.sendMail(adminMailOptions),
+      transporter.sendMail(autoReplyOptions),
+    ]);
+>>>>>>> dbe9b69 (all section added)
 
     return NextResponse.json(
       { message: 'Message sent successfully' },
@@ -419,10 +591,14 @@ Authentic Indian Cuisine • Fresh Daily Preparation • Home Delivery
   } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
+<<<<<<< HEAD
       {
         error:
           'Failed to send message. Please try again or contact us directly.',
       },
+=======
+      { error: 'Failed to send message. Please try again later.' },
+>>>>>>> dbe9b69 (all section added)
       { status: 500 }
     );
   }

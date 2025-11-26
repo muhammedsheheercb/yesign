@@ -1,7 +1,11 @@
 'use client';
 import React from 'react';
+<<<<<<< HEAD
 import { AlertTriangle, RefreshCw, Home, Phone } from 'lucide-react';
 import Link from 'next/link';
+=======
+import { AlertTriangle, RefreshCw, Home, Mail } from 'lucide-react';
+>>>>>>> dbe9b69 (all section added)
 
 interface ErrorProps {
   error?: Error;
@@ -13,6 +17,7 @@ interface ErrorProps {
 const Error: React.FC<ErrorProps> = ({
   error,
   reset,
+<<<<<<< HEAD
   title = 'Oops! Something went wrong',
   message = "We're experiencing some technical difficulties. Our team at Spice Catering is working to fix this issue. Please try again in a moment.",
 }) => {
@@ -38,25 +43,62 @@ const Error: React.FC<ErrorProps> = ({
             </div>
             {/* Pulsing rings */}
             <div className="absolute inset-0 animate-ping rounded-full border-2 border-[#FF6B35]/30"></div>
+=======
+  title = 'Something went wrong',
+  message = "We're experiencing some technical difficulties. Our team at True Manchester is working to fix this issue.",
+}) => {
+  return (
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#000]">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-[#D1A04D]/10 via-transparent to-[#D1A04D]/5"></div>
+        <div className="absolute top-32 left-16 h-40 w-40 animate-pulse rounded-full border border-[#D1A04D]/20"></div>
+        <div className="absolute right-20 bottom-32 h-56 w-56 rounded-full border border-[#D1A04D]/10"></div>
+        <div className="absolute top-2/3 right-32 h-28 w-28 animate-pulse rounded-full border border-[#D1A04D]/15 delay-500"></div>
+      </div>
+
+      <div className="relative z-10 mx-auto px-6 text-center">
+        {/* Error Icon */}
+        <div className="mb-8 flex justify-center">
+          <div className="relative">
+            <div className="flex h-32 w-32 animate-pulse items-center justify-center rounded-full border-2 border-[#D1A04D]/40 bg-gradient-to-br from-[#E6B85C]/30 to-[#D1A04D]/30">
+              <AlertTriangle size={64} className="text-[#D1A04D]" />
+            </div>
+            <div className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-[#D1A04D]/80">
+              <span className="text-sm font-bold text-[#000]">!</span>
+            </div>
+>>>>>>> dbe9b69 (all section added)
           </div>
         </div>
 
         {/* Main Content */}
         <div className="mb-12">
+<<<<<<< HEAD
           <h1 className="font-milchella mb-6 text-4xl leading-tight text-[#A9861B] md:text-5xl">
             {title}
           </h1>
           <p className="font-montserrat__alternates mx-auto mb-6 max-w-2xl text-base leading-relaxed text-[#666666] md:text-lg">
+=======
+          <h1 className="font-josefin_Sans mb-6 text-5xl leading-tight font-[500] tracking-[2%] text-[#D1A04D] md:text-6xl">
+            {title}
+          </h1>
+          <p className="font-poppins mx-auto mb-6 max-w-2xl text-lg leading-relaxed font-[300] tracking-[1%] text-[#E6E6E6] md:text-xl">
+>>>>>>> dbe9b69 (all section added)
             {message}
           </p>
 
           {/* Error Details (if provided) */}
           {error && (
+<<<<<<< HEAD
             <div className="mx-auto mb-8 max-w-2xl rounded-xl border-2 border-[#FF6B35]/30 bg-white p-6 shadow-lg">
               <p className="font-montserrat__alternates mb-2 text-sm font-semibold text-[#FF6B35] uppercase">
                 Error Details:
               </p>
               <p className="overflow-x-auto rounded-lg bg-[#FFF8E7] p-4 text-left font-mono text-xs text-[#373737] md:text-sm">
+=======
+            <div className="mx-auto mb-8 max-w-2xl rounded-lg border border-[#D1A04D]/50 bg-[#D1A04D]/10 p-4 shadow-md">
+              <p className="overflow-x-auto text-left font-mono text-sm text-[#E6E6E6]">
+>>>>>>> dbe9b69 (all section added)
                 {error.message}
               </p>
             </div>
@@ -68,7 +110,11 @@ const Error: React.FC<ErrorProps> = ({
           {reset && (
             <button
               onClick={reset}
+<<<<<<< HEAD
               className="font-montserrat__alternates group flex transform items-center gap-3 rounded-full bg-gradient-to-r from-[#A9861B] to-[#D4AF37] px-8 py-4 font-bold text-white uppercase shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+=======
+              className="font-open_Sans group flex transform items-center gap-3 rounded-full bg-[#D1A04D] px-8 py-4 font-[600] text-[#000] uppercase shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#E6B85C]"
+>>>>>>> dbe9b69 (all section added)
             >
               <RefreshCw
                 size={20}
@@ -78,6 +124,7 @@ const Error: React.FC<ErrorProps> = ({
             </button>
           )}
 
+<<<<<<< HEAD
           <Link href={'/'}>
             <button className="font-montserrat__alternates group flex items-center gap-3 rounded-full border-2 border-[#A9861B] px-8 py-4 font-bold text-[#A9861B] uppercase transition-all duration-300 hover:bg-[#A9861B] hover:text-white">
               <Home size={20} />
@@ -115,11 +162,37 @@ const Error: React.FC<ErrorProps> = ({
           <div className="flex items-center gap-3 rounded-full border-2 border-[#25D366]/30 bg-white px-6 py-3 shadow-md">
             <div className="h-3 w-3 animate-pulse rounded-full bg-[#25D366] delay-300"></div>
             <span className="font-montserrat__alternates text-sm font-semibold text-[#666666]">
+=======
+          <button className="font-open_Sans group flex items-center gap-3 rounded-full border-2 border-[#D1A04D] px-8 py-4 font-[600] text-[#D1A04D] uppercase transition-all duration-300 hover:bg-[#D1A04D] hover:text-[#000]">
+            <Home size={20} />
+            Back to Home
+          </button>
+
+          <button className="font-open_Sans group flex items-center gap-3 rounded-full border-2 border-[#E6B85C] px-8 py-4 font-[600] text-[#E6B85C] uppercase transition-all duration-300 hover:bg-[#E6B85C] hover:text-[#000]">
+            <Mail size={20} />
+            Report Issue
+          </button>
+        </div>
+
+        {/* Status Indicators */}
+        <div className="flex items-center justify-center gap-6 opacity-70">
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 animate-pulse rounded-full bg-[#D1A04D]"></div>
+            <span className="font-poppins text-sm font-[300] text-[#E6E6E6]">
+              Service Interrupted
+            </span>
+          </div>
+          <div className="h-4 w-px bg-[#D1A04D]/40"></div>
+          <div className="flex items-center gap-2">
+            <div className="h-3 w-3 animate-pulse rounded-full bg-[#E6B85C] delay-300"></div>
+            <span className="font-poppins text-sm font-[300] text-[#E6E6E6]">
+>>>>>>> dbe9b69 (all section added)
               Recovery in Progress
             </span>
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Support Card */}
         <div className="mx-auto max-w-2xl rounded-2xl border-2 border-[#A9861B]/20 bg-white p-8 shadow-2xl">
           <h3 className="font-milchella mb-4 text-2xl text-[#A9861B] md:text-3xl">
@@ -268,6 +341,54 @@ const Error: React.FC<ErrorProps> = ({
           animation-delay: 1000ms;
         }
       `}</style>
+=======
+        {/* Restaurant Support Card */}
+        <div className="mt-12 rounded-lg border border-[#D1A04D]/20 bg-[#D1A04D]/10 p-6 shadow-md">
+          <h3 className="font-josefin_Sans mb-2 text-2xl font-[500] text-[#D1A04D]">
+            Need immediate assistance?
+          </h3>
+          <p className="font-poppins mb-4 text-sm font-[300] tracking-[1%] text-[#E6E6E6]">
+            Contact True Manchester directly for reservations, cocktail bar
+            bookings, or inquiries
+          </p>
+          <div className="flex flex-col gap-2 sm:flex-row sm:justify-center sm:gap-6">
+            <div className="flex items-center gap-2">
+              <span className="font-poppins text-sm font-[400] text-[#D1A04D]">
+                Phone:
+              </span>
+              <span className="font-poppins text-sm font-[300] text-[#E6E6E6]">
+                +44 161 xxx xxxx
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-poppins text-sm font-[400] text-[#D1A04D]">
+                Email:
+              </span>
+              <span className="font-poppins text-sm font-[300] text-[#E6E6E6]">
+                info@truemanchester.co.uk
+              </span>
+            </div>
+          </div>
+          <div className="mt-3 flex items-center justify-center gap-2">
+            <span className="font-poppins text-sm font-[400] text-[#D1A04D]">
+              Location:
+            </span>
+            <span className="font-poppins text-sm font-[300] text-[#E6E6E6]">
+              West Didsbury&apos;s Burton
+            </span>
+          </div>
+        </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-20 left-20 h-4 w-4 animate-bounce rounded-full bg-[#D1A04D]/60"></div>
+        <div className="absolute right-16 bottom-40 h-2 w-2 animate-bounce rounded-full bg-[#E6B85C]/60 delay-700"></div>
+        <div className="absolute top-1/3 right-10 h-3 w-3 animate-bounce rounded-full bg-[#D1A04D]/40 delay-1000"></div>
+      </div>
+
+      {/* Subtle Effect Lines */}
+      <div className="absolute top-1/4 left-0 h-px w-full animate-pulse bg-gradient-to-r from-transparent via-[#D1A04D]/30 to-transparent"></div>
+      <div className="absolute bottom-1/3 left-0 h-px w-full animate-pulse bg-gradient-to-r from-transparent via-[#E6B85C]/20 to-transparent delay-500"></div>
+>>>>>>> dbe9b69 (all section added)
     </div>
   );
 };

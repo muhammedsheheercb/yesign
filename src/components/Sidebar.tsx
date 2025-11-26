@@ -6,6 +6,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+<<<<<<< HEAD
+=======
+import { Instagram } from 'lucide-react';
+>>>>>>> dbe9b69 (all section added)
 import Image from 'next/image';
 import Link from 'next/link';
 import { type FC } from 'react';
@@ -39,10 +43,23 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
               Home
             </Link>
             <Link
+<<<<<<< HEAD
               href="/menu"
               className="font-plafair flex w-full justify-center p-0 text-2xl font-normal text-[#fff]"
             >
               Menu
+=======
+              href="/our-services"
+              className="font-plafair flex w-full justify-center p-0 text-2xl font-normal text-[#fff]"
+            >
+              Our Services
+            </Link>
+            <Link
+              href="/gallery"
+              className="font-plafair flex w-full justify-center p-0 text-2xl font-normal text-[#fff]"
+            >
+              Gallery
+>>>>>>> dbe9b69 (all section added)
             </Link>
 
             <Link
@@ -51,6 +68,18 @@ const Sidebar: FC<SidebarProps> = ({ children }) => {
             >
               Contact
             </Link>
+<<<<<<< HEAD
+=======
+            <Link
+              href="https://www.instagram.com/yesign0fficial/?igsh=dnd4ZGk1MDVjcHY2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-400 hover:text-black"
+              aria-label="Instagram"
+            >
+              <Instagram size={18} />
+            </Link>
+>>>>>>> dbe9b69 (all section added)
           </SheetDescription>
         </SheetHeader>
       </SheetContent>

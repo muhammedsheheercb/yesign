@@ -3,7 +3,10 @@ import {
   Barlow_Condensed,
   Inter,
   Manrope,
+<<<<<<< HEAD
   Montserrat_Alternates,
+=======
+>>>>>>> dbe9b69 (all section added)
   Playfair_Display,
   Poppins,
 } from 'next/font/google';
@@ -14,6 +17,7 @@ import Providers from './Providers';
 import CookieConsent from '@/components/CookieConsent';
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   metadataBase: new URL('https://spicecatering.ae/'),
   title:
     'Spice Catering | Authentic Indian Food Delivery in Dubai - Monthly Mess Packages',
@@ -276,6 +280,55 @@ export const serviceData = {
       },
     ],
   },
+=======
+  metadataBase: new URL('http://localhost:3000/'),
+  title:
+    'YESIGN | Creative Agency for Graphic Design, Web Design, SEO & Branding',
+  description:
+    'YESIGN is a full-service creative digital agency offering premium graphic design, web designing, SEO, social media marketing, branding, digital marketing, and video production services. Grow your brand with impactful design and smart marketing solutions.',
+  keywords: [
+    'YESIGN',
+    'graphic designing',
+    'web designing',
+    'SEO services',
+    'social media marketing',
+    'branding agency',
+    'digital marketing',
+    'video production',
+    'creative agency',
+    'website design company',
+    'digital branding',
+    'marketing agency',
+    'content creation',
+  ],
+
+  openGraph: {
+    title: 'YESIGN | Creative Digital Agency – Design, Branding & Marketing',
+    description:
+      'YESIGN offers professional graphic design, web design, SEO, branding, social media marketing, digital marketing, and video production services. Build a powerful brand with YESIGN’s creative expertise.',
+    siteName: 'YESIGN',
+    images: [
+      {
+        url: '/images/logo.webp',
+        width: 1200,
+        height: 630,
+        alt: 'YESIGN Creative Digital Agency – Design & Marketing Services',
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'YESIGN | Graphic Design, SEO, Web Design & Digital Marketing',
+    description:
+      'YESIGN is your creative partner for web design, graphic designing, SEO, digital marketing, branding, and social media marketing services.',
+    images: ['/images/logo.webp'],
+  },
+
+  icons: [{ rel: 'icon', url: '/images/logo.webp' }],
+>>>>>>> dbe9b69 (all section added)
 };
 
 const manrope = Manrope({
@@ -284,12 +337,15 @@ const manrope = Manrope({
   weight: ['400', '500', '600', '700', '800'],
 });
 
+<<<<<<< HEAD
 const montserrat__alternates = Montserrat_Alternates({
   subsets: ['latin'],
   variable: '--font-montserrat__alternates',
   weight: ['400', '500', '600', '700'],
 });
 
+=======
+>>>>>>> dbe9b69 (all section added)
 const poppins = Poppins({
   subsets: ['latin'],
   variable: '--font-poppins',
@@ -328,8 +384,12 @@ export default function RootLayout({
           poppins.variable,
           inter.variable,
           plafair.variable,
+<<<<<<< HEAD
           barlow.variable,
           montserrat__alternates.variable
+=======
+          barlow.variable
+>>>>>>> dbe9b69 (all section added)
         )}
       >
         <Providers>{children}</Providers>

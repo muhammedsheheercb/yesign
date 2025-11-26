@@ -1,4 +1,8 @@
 'use client';
+<<<<<<< HEAD
+=======
+
+>>>>>>> dbe9b69 (all section added)
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Carousel,
@@ -8,6 +12,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { useState } from 'react';
+<<<<<<< HEAD
 import { Star } from 'lucide-react';
 
 interface Review {
@@ -88,6 +93,26 @@ const ReviewsSection = () => {
       avatarColor: '#A9861B',
     },
   ];
+=======
+import { Star, Quote, User } from 'lucide-react';
+
+interface Review {
+  rating: number;
+  text: { text: string };
+  authorAttribution: {
+    displayName: string;
+    photoUri: string;
+  };
+  relativePublishTimeDescription: string;
+}
+
+interface ReviewsCarouselProps {
+  reviews: Review[];
+}
+
+const ReviewsCarousel = ({ reviews }: ReviewsCarouselProps) => {
+  const [expandedReviews, setExpandedReviews] = useState(new Set<number>());
+>>>>>>> dbe9b69 (all section added)
 
   const toggleReadMore = (index: number) => {
     const newExpanded = new Set(expandedReviews);
@@ -104,6 +129,7 @@ const ReviewsSection = () => {
   };
 
   return (
+<<<<<<< HEAD
     <section className="relative w-full overflow-hidden bg-gradient-to-b from-[#FFF8E7] to-[#FFFFFF] py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Header */}
@@ -263,3 +289,98 @@ const ReviewsSection = () => {
 };
 
 export default ReviewsSection;
+=======
+    <div className="w-full">
+      <Carousel className="w-full">
+        <CarouselContent className="-ml-2 md:-ml-4">
+          {reviews
+            .filter((review) => review.rating >= 4)
+            .map((review, index) => {
+              const isExpanded = expandedReviews.has(index);
+              const needsReadMore = isTextTruncated(review.text.text);
+
+              return (
+                <CarouselItem
+                  key={index}
+                  className="basis-full pl-2 md:basis-1/2 md:pl-4 lg:basis-1/3 2xl:basis-1/4"
+                >
+                  <div className="p-1">
+                    <Card className="group relative overflow-hidden rounded-none border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-500 hover:border-cyan-400/50 hover:bg-white/10">
+                      {/* Decorative Corner Accent */}
+                      <div className="absolute top-0 left-0 h-16 w-16 border-t-2 border-l-2 border-cyan-400/30 transition-all duration-500 group-hover:h-20 group-hover:w-20 group-hover:border-cyan-400" />
+                      <div className="absolute right-0 bottom-0 h-16 w-16 border-r-2 border-b-2 border-cyan-400/30 transition-all duration-500 group-hover:h-20 group-hover:w-20 group-hover:border-cyan-400" />
+
+                      {/* Quote Icon */}
+                      <div className="absolute top-6 right-6 opacity-20 transition-opacity duration-500 group-hover:opacity-40">
+                        <Quote className="h-12 w-12 text-cyan-400" />
+                      </div>
+
+                      <CardContent className="relative z-10 flex min-h-[400px] flex-col gap-6 p-8">
+                        {/* Rating Stars */}
+                        <div className="flex gap-1">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <Star
+                              key={i}
+                              className={`h-4 w-4 transition-all duration-300 ${
+                                i < review.rating
+                                  ? 'fill-current text-cyan-400'
+                                  : 'text-white/20'
+                              }`}
+                            />
+                          ))}
+                        </div>
+
+                        {/* Review Text */}
+                        <div className="flex flex-1 flex-col">
+                          <p
+                            className={`font-inter text-sm leading-relaxed text-white/80 transition-all duration-300 md:text-base ${
+                              isExpanded ? '' : 'line-clamp-5'
+                            }`}
+                          >
+                            &ldquo;{review.text.text}&rdquo;
+                          </p>
+
+                          {needsReadMore && (
+                            <button
+                              onClick={() => toggleReadMore(index)}
+                              className="mt-4 self-start text-xs font-medium tracking-wider text-cyan-400 uppercase transition-all duration-200 hover:text-cyan-300"
+                            >
+                              {isExpanded ? '← Less' : 'Read More →'}
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Author Info */}
+                        <div className="mt-auto flex items-center gap-4 border-t border-white/10 pt-6">
+                          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400/50 bg-cyan-400/10">
+                            <User className="h-5 w-5 text-cyan-400" />
+                          </div>
+                          <div>
+                            <p className="font-inter text-sm font-semibold text-white">
+                              {review.authorAttribution.displayName}
+                            </p>
+                            <p className="font-inter text-xs text-white/50">
+                              {review.relativePublishTimeDescription}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              );
+            })}
+        </CarouselContent>
+
+        {/* Navigation Arrows */}
+        <div className="mt-10 flex justify-center gap-4">
+          <CarouselPrevious className="static h-12 w-12 translate-y-0 rounded-full border border-white/20 bg-transparent text-white transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:bg-cyan-400 hover:text-black" />
+          <CarouselNext className="static h-12 w-12 translate-y-0 rounded-full border border-white/20 bg-transparent text-white transition-all duration-300 hover:scale-105 hover:border-cyan-400 hover:bg-cyan-400 hover:text-black" />
+        </div>
+      </Carousel>
+    </div>
+  );
+};
+
+export { ReviewsCarousel };
+>>>>>>> dbe9b69 (all section added)

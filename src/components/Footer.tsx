@@ -1,4 +1,5 @@
 'use client';
+<<<<<<< HEAD
 import Link from 'next/link';
 
 const Footer = () => {
@@ -312,3 +313,251 @@ const Footer = () => {
 };
 
 export default Footer;
+=======
+import React, { useState } from 'react';
+import {
+  Instagram,
+  Mail,
+  Phone,
+  MapPin,
+  ChevronUp,
+  Send,
+  ArrowUpRight,
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export function Footer() {
+  const [email, setEmail] = useState('');
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubscribed(true);
+    setEmail('');
+    setTimeout(() => setIsSubscribed(false), 3000);
+  };
+
+  const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Our Services', href: '/our-services' },
+    { label: 'Gallery', href: '/gallery' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
+  const services = [
+    'Graphic Design',
+    'Web Development',
+    'SEO Services',
+    'Social Media',
+    'Branding',
+    'Video Production',
+  ];
+
+  return (
+    <footer className="relative w-full bg-black/95 text-white">
+      {/* Top Decorative Border */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+
+      {/* Main Footer Content */}
+      <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 lg:py-20">
+        {/* Top Section - CTA */}
+        <div className="mb-16 flex flex-col items-center justify-between gap-8 border-b border-white/10 pb-16 lg:flex-row">
+          <div className="text-center lg:text-left">
+            <h2 className="font-barlow text-3xl font-light tracking-tight text-white uppercase md:text-4xl lg:text-5xl">
+              Let&apos;s Create
+              <span className="ml-3 font-bold text-cyan-400">Together</span>
+            </h2>
+            <p className="font-inter mt-3 text-base text-white/60 md:text-lg">
+              Ready to transform your brand? Get in touch today.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="group font-inter flex items-center gap-3 rounded-full border-2 border-cyan-400 bg-transparent px-8 py-4 text-sm font-semibold tracking-wider text-cyan-400 uppercase transition-all duration-300 hover:bg-cyan-400 hover:text-black"
+          >
+            Start a Project
+            <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+          </Link>
+        </div>
+
+        {/* Main Grid */}
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Company Info */}
+          <div className="space-y-6 lg:col-span-1">
+            <Image
+              src="/images/logo.webp"
+              width={140}
+              height={60}
+              alt="Yesign logo"
+              className="h-12 w-auto"
+            />
+            <p className="font-inter text-sm leading-relaxed text-white/60">
+              YESIGN is a full-service creative agency delivering exceptional
+              design, development, and marketing solutions.
+            </p>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.instagram.com/yesign0fficial/?igsh=dnd4ZGk1MDVjcHY2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/60 transition-all duration-300 hover:border-cyan-400 hover:bg-cyan-400 hover:text-black"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-6">
+            <h3 className="font-inter text-xs font-semibold tracking-[0.2em] text-white uppercase">
+              Quick Links
+            </h3>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-inter group flex items-center gap-2 text-sm text-white/60 transition-colors duration-300 hover:text-cyan-400"
+                  >
+                    <span className="h-px w-0 bg-cyan-400 transition-all duration-300 group-hover:w-4" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-6">
+            <h3 className="font-inter text-xs font-semibold tracking-[0.2em] text-white uppercase">
+              Services
+            </h3>
+            <ul className="space-y-3">
+              {services.map((service) => (
+                <li key={service}>
+                  <span className="font-inter text-sm text-white/60">
+                    {service}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact & Newsletter */}
+          <div className="space-y-6">
+            <h3 className="font-inter text-xs font-semibold tracking-[0.2em] text-white uppercase">
+              Get In Touch
+            </h3>
+
+            {/* Contact Info */}
+            <div className="space-y-3">
+              <a
+                href="mailto:admin@yesign.in"
+                className="font-inter flex items-center gap-3 text-sm text-white/60 transition-colors duration-300 hover:text-cyan-400"
+              >
+                <Mail size={16} className="flex-shrink-0 text-cyan-400" />
+                admin@yesign.in
+              </a>
+              <a
+                href="tel:+919400671513"
+                className="font-inter flex items-center gap-3 text-sm text-white/60 transition-colors duration-300 hover:text-cyan-400"
+              >
+                <Phone size={16} className="flex-shrink-0 text-cyan-400" />
+                +91 9400671513
+              </a>
+              <div className="font-inter flex items-start gap-3 text-sm text-white/60">
+                <MapPin
+                  size={16}
+                  className="mt-0.5 flex-shrink-0 text-cyan-400"
+                />
+                <span>
+                  Pradhibha Building, Erumapetty
+                  <br />
+                  Thrissur, Kerala 680584
+                </span>
+              </div>
+            </div>
+
+            {/* Newsletter */}
+            <div className="pt-4">
+              <p className="font-inter mb-3 text-xs font-semibold tracking-[0.2em] text-white uppercase">
+                Newsletter
+              </p>
+              <form onSubmit={handleSubscribe} className="relative">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="font-inter w-full border border-white/20 bg-white/5 px-4 py-3 pr-12 text-sm text-white placeholder-white/40 backdrop-blur-sm transition-all duration-300 focus:border-cyan-400 focus:bg-white/10 focus:outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="absolute top-1/2 right-2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-cyan-400 text-black transition-all duration-300 hover:bg-cyan-300"
+                  aria-label="Subscribe"
+                >
+                  <Send size={14} />
+                </button>
+              </form>
+              <AnimatePresence>
+                {isSubscribed && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="font-inter mt-2 text-xs text-cyan-400"
+                  >
+                    Thanks for subscribing!
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="mt-16 flex flex-col items-center justify-center gap-4 border-t border-white/10 pt-8 md:flex-row">
+          <p className="font-inter text-sm text-white/40">
+            &copy; {new Date().getFullYear()} YESIGN. All rights reserved.
+          </p>
+        </div>
+      </div>
+
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={scrollToTop}
+            className="fixed right-8 bottom-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400 bg-black text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 hover:bg-cyan-400 hover:text-black"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp size={20} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+    </footer>
+  );
+}
+>>>>>>> dbe9b69 (all section added)

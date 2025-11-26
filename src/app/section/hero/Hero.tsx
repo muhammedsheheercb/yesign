@@ -1,5 +1,9 @@
 'use client';
+<<<<<<< HEAD
 import { ScrollAnimate } from '@/components/Animation';
+=======
+import { EntranceWave, ScrollAnimate } from '@/components/Animation';
+>>>>>>> dbe9b69 (all section added)
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 
@@ -8,11 +12,17 @@ const Hero: React.FC = () => {
 
   // Array of image paths - add your images here
   const images = [
+<<<<<<< HEAD
     '/images/home/hero/1.webp',
     '/images/home/hero/2.webp',
     '/images/home/hero/3.webp',
     '/images/home/hero/4.webp',
 
+=======
+    '/images/home/hero/bg.webp',
+    '/images/home/hero/bg2.webp',
+    '/images/home/hero/bg3.webp',
+>>>>>>> dbe9b69 (all section added)
     // Add more images as needed
   ];
 
@@ -53,9 +63,16 @@ const Hero: React.FC = () => {
       {/* Animated Content Container */}
       <div className="relative z-20 flex h-full items-center justify-center">
         <ScrollAnimate>
+<<<<<<< HEAD
           <h1 className="font-milchella text-center text-5xl font-[700] tracking-[5%] text-[#fff] uppercase hover:cursor-pointer lg:text-8xl">
             SPICY SQUARE <br /> CATERING SERVIVES
           </h1>
+=======
+          <EntranceWave
+            text="Yesign"
+            className="font-josefin_Sans text-center text-5xl font-[700] tracking-[5%] text-[#fff] uppercase hover:cursor-pointer lg:text-8xl"
+          />
+>>>>>>> dbe9b69 (all section added)
         </ScrollAnimate>
       </div>
 
